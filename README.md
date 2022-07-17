@@ -17,7 +17,7 @@ You can do so by running the following script from the shell:
 $ chmod +x install-ovs-dependencies.sh
 $ ./install-ovs-dependencies.sh
 ```
-Additionally, you also require the following tools installed on your machine:
+This script will install most of the following tools on your machine:
 <ol>
     <li>gcc-8 (at least version 8)</li>
     <li>make</li>
@@ -33,6 +33,10 @@ Additionally, you also require the following tools installed on your machine:
 
 ## SUDO Access
 > **Note:** OVS requires sudo access for most of its operation. Copy the `ovs.vars.template` to `ovs.vars` and update `USER_PASSWORD` with your user password and also add the table ID for ovs (that you can find when you run `make show-bridges` for the first time).
+Then source this script to make these environment variables available.
+```sh
+$ source ovs.vars
+```
 
 ## Clone and build DPDK *(only if userspace switch is to be tested!!)*
 From project root directory, clone, configure, build and install `DPDK` on your machine as following:
@@ -62,29 +66,29 @@ To setup `ovs`, we need to fetch the submodule, configure it for symbolic debug,
 make get-ovs
 ```
 
-Additionally, install the usdt probe module that we will be utilizing for our advanced experiments.
+<!-- Additionally, install the usdt probe module that we will be utilizing for our advanced experiments.
 ```sh
 make get-systemtap
-```
+``` -->
 
 Then, chose your datapath for experiments:
 ```sh
 # do only one of the following options, based on your datapath selection
 # option-1: for upstream linux kernel datapath (whatever is included in your linux distribution)
-make configure-ovs-build
+$ make configure-ovs-build
 # option-2: for kernel datapath, but build the new module that comes with the ovs repository
-make configure-ovs-build-with-kernel-module
+$ make configure-ovs-build-with-kernel-module
 # option-3: for DPDK (userspace) datapath
-make configure-ovs-build-with-dpdk
+$ make configure-ovs-build-with-dpdk
 # option-4: for XDP-based (userspace) datapath
-make configure-ovs-build-with-xdp
+$ make configure-ovs-build-with-xdp
 ```
 
 Now, build and install...
 ```sh
-make build-ovs-with-debug-symbols
-make install-ovs
-make show-ovs-version
+$ make build-ovs-with-debug-symbols
+$ make install-ovs
+$ make show-ovs-version
 ```
 
 Once installed, add the following line to your `~/.bashrc` file:
