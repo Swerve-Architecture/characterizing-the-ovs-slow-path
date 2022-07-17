@@ -1,0 +1,18 @@
+[submodule "deps/ovs"]
+	path = deps/ovs
+	url = git@github.com:Swerve-Architecture/ovs.git
+[submodule "deps/dpdk"]
+	path = deps/dpdk
+	url = http://dpdk.org/git/dpdk
+[submodule "deps/googletest"]
+	path = deps/googletest
+	url = https://github.com/google/googletest.git
+[submodule "deps/libbpf"]
+	path = deps/libbpf
+	url = https://github.com/libbpf/libbpf.git
+[submodule "deps/bcc"]
+	path = deps/bcc
+	url = https://github.com/iovisor/bcc.git
+[submodule "deps/bpftrace"]
+	path = deps/bpftrace
+	url = https://github.com/iovisor/bpftrace.git
