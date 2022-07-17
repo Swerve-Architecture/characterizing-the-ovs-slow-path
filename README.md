@@ -11,6 +11,12 @@ This is the main repository for running `ControlPlaneDSA` experiments. Our exper
 
 ### Dependencies
 Install the build requirements listed on the [following link](https://github.com/openvswitch/ovs/blob/master/Documentation/intro/install/general.rst#id13).
+You can do so by running the following script from the shell:
+```sh
+# make the script executable and install the (minimum) ovs dependencies
+$ chmod +x install-ovs-dependencies.sh
+$ ./install-ovs-dependencies.sh
+```
 Additionally, you also require the following tools installed on your machine:
 <ol>
     <li>gcc-8 (at least version 8)</li>

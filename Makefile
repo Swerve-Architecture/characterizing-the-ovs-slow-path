@@ -178,6 +178,8 @@ export OVS-VSCTL 									= $(SUDO) -s ovs-vsctl
 export OVS-OFCTL 									= $(SUDO) -s ovs-ofctl
 export OVS-APPCTL 									= $(SUDO) -s ovs-appctl
 
+.DEFAULT_GOAL := show-pci-devices
+
 ########################################################### PCI commands #############################################################
 show-pci-devices:
 	$(SUDO) lshw -c network -businfo
@@ -199,10 +201,6 @@ git-show-all-submodules:
 
 get-ovs:
 	git submodule update --init $(OVS_SUBMODULE)
-
-# usdt probe module
-get-systemtap:
-	$(SUDO) apt-get install systemtap-sdt-dev
 
 $(OVS_BUILD_DIR):
 	@echo "[LOG] Creating OVS Build Directory => $(OVS_BUILD_DIR)"
