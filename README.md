@@ -42,28 +42,28 @@ $ source ovs.vars
 From project root directory, clone, configure, build and install `DPDK` on your machine as following:
 
 ```sh
-make get-dpdk
-make configure-dpdk
-make build-dpdk
-make install-dpdk
-make check-dpdk-version
+$ make get-dpdk
+$ make configure-dpdk
+$ make build-dpdk
+$ make install-dpdk
+$ make check-dpdk-version
 ```
 
 If a rebuild of `dpdk` is necessary, do:
 
 ```sh
-make clean-dpdk
-make configure-dpdk
-make build-dpdk
-make install-dpdk
-make show-dpdk-version
+$ make clean-dpdk
+$ make configure-dpdk
+$ make build-dpdk
+$ make install-dpdk
+$ make show-dpdk-version
 ```
 
 ## Clone and build Open-vSwitch
 To setup `ovs`, we need to fetch the submodule, configure it for symbolic debug, build and install on the system. Run the following from the project root directory.
 
 ```sh
-make get-ovs
+$ make get-ovs
 ```
 
 <!-- Additionally, install the usdt probe module that we will be utilizing for our advanced experiments.
@@ -100,13 +100,13 @@ export PATH=$PATH:/usr/local/share/openvswitch/scripts
 At any point, if a rebuild is necessary, clean the build and re-run as following:
 
 ```sh
-make clean-ovs-build
-make configure-ovs-build # or whicheven option you chose earlier
-make build-ovs-with-debug-symbols
-make install-ovs
+$ make clean-ovs-build
+$ make configure-ovs-build # or whicheven option you chose earlier
+$ make build-ovs-with-debug-symbols
+$ make install-ovs
 ```
 
-## Build test container image for experimentation
+<!-- ## Build test container image for experimentation
 We need some custom modules for testing switch performance against data and control traffic. We provide these modules as a docker image that we use as our virtual hosts (containers) that are connected to our `ovs-switchd` instance. To build the docker image, run the following from project root directory:
 
 ```sh
@@ -119,20 +119,48 @@ If, at a later point, a new module is added to the `Dockerfile`, or a rebuild is
 make clean-docker-image
 make clean-dangling-images
 make build-docker-image
-```
+``` -->
 
-## Start Experimenting
+## Experiments
 
-### Start Open-vSwitch dameons
-We start OVS by running its dameons and setting minimum number of userspace handler threads (normally 2), using the following command from project root directory:
+### Start Open-vSwitch daemons
+We start OVS by running its daemons and setting minimum number of userspace handler threads (1), using the following command from project parent directory:
 
 ```sh
-make start-ovs 
-make set-ovs-nhandler-threads-to-2
+$ make start-ovs 
+$ make set-ovs-nhandler-threads-to-1
 ```
-This will allow us to work with minimum number of handler threads which should help us debug the `ovs-vswitchd` in a more managable manner.
+This will allow us to work with minimum number of handler threads which should help us step-through the `ovs-vswitchd` using `gdb`.
 
-### Build test switch
+You should see an output such as following:
+
+```sh
+ * /usr/local/etc/openvswitch/conf.db does not exist
+ * Creating empty database /usr/local/etc/openvswitch/conf.db
+ * Starting ovsdb-server
+ * Configuring Open vSwitch system IDs
+ * Inserting openvswitch module
+ * Starting ovs-vswitchd
+ * Enabling remote OVSDB managers
+```
+
+At this point, you should run:
+
+```sh
+$ make show-bridges
+```
+
+and copy the table ID in the output to your `ovs.vars` file in the `OVSDB_TABLE_NAME` variable.
+The output from this `make` target should look similar to this:
+
+```sh
+bbac14fc-63db-4d5e-b931-279b12a25142
+    ovs_version: "2.17.90"
+```
+
+Here, the first line contains our table ID.
+
+### Build a test switch
 We need a test switch to see how `ovs-vswitchd` performs in the userspace. To add this test switch (called `test-br0`), run the following command:
 
 ```sh
