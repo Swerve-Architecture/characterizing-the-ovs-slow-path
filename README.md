@@ -46,7 +46,7 @@ $ make get-dpdk
 $ make configure-dpdk
 $ make build-dpdk
 $ make install-dpdk
-$ make check-dpdk-version
+$ make show-dpdk-version
 ```
 
 If a rebuild of `dpdk` is necessary, do:
