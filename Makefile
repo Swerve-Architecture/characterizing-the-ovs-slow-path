@@ -1,182 +1,182 @@
 # ovs build and open-vswitch options
-export OVS_SUBMODULE 								= ovs
-export OVS_SOURCE_DIR 								= $(PWD)/ovs
-export OVS_BUILD_DIR 								= $(OVS_SOURCE_DIR)/build
-export OVS_VSWITCHD_BUILD_DIR						= $(OVS_BUILD_DIR)/vswitchd/
-export OVS_VSWITCHD_EXECUTABLE_NAME					= ovs-vswitchd
-export KERNEL_VERSION 								= $(shell uname -r)
-export KERNEL_BUILD_DIR 							= /lib/modules/$(KERNEL_VERSION)/build
-export OVS_BUILD_CONFIGURE_SCRIPT 					= configure
-export OVS_BUILD_C_COMPILER 						= gcc
-export OVS_BUILD_FLAGS 								= --with-debug
-export OVS_USDT_BUILD_FLAG							= --enable-usdt-probes
-export OVS_BUILD_FLAGS_WITH_DPDK 					= $(OVS_BUILD_FLAGS) --with-dpdk=static
-export OVS_BUILD_FLAGS_WITH_KERNEL_MODULE 			= $(OVS_BUILD_FLAGS) --with-linux=$(KERNEL_BUILD_DIR)
-export OVS_BUILD_CFLAGS 							= -g
-export OVS_SYSTEM_ID 								= 2022
-export OVS_PID_FILE 								= /usr/local/var/run/openvswitch/ovs-vswitchd.pid
-export OVS_VSWITCHD_LOG_FILE 						= /usr/local/var/log/openvswitch/ovs-vswitchd.log
-export OVS_DB_SOCK 									= /usr/local/var/run/openvswitch/db.sock
-export OVS_SCRIPTS_PATH								= /usr/local/share/openvswitch/scripts
-export OVS_INSTALL_DIR_1							= /usr/local/sbin
-export OVS_INSTALL_DIR_2							= /usr/local/bin
-export OVS_INSTALL_DIR_3							= /usr/sbin
+OVS_SUBMODULE 								:= ovs
+OVS_SOURCE_DIR 								:= $(PWD)/ovs
+OVS_BUILD_DIR 								:= $(OVS_SOURCE_DIR)/build
+OVS_VSWITCHD_BUILD_DIR						:= $(OVS_BUILD_DIR)/vswitchd/
+OVS_VSWITCHD_EXECUTABLE_NAME				:= ovs-vswitchd
+KERNEL_VERSION 								:= $(shell uname -r)
+KERNEL_BUILD_DIR 							:= /lib/modules/$(KERNEL_VERSION)/build
+OVS_BUILD_CONFIGURE_SCRIPT 					:= configure
+OVS_BUILD_C_COMPILER 						:= gcc
+OVS_BUILD_FLAGS 							:= --with-debug
+OVS_USDT_BUILD_FLAG							:= --enable-usdt-probes
+OVS_BUILD_FLAGS_WITH_DPDK 					:= $(OVS_BUILD_FLAGS) --with-dpdk=static
+OVS_BUILD_FLAGS_WITH_KERNEL_MODULE 			:= $(OVS_BUILD_FLAGS) --with-linux=$(KERNEL_BUILD_DIR)
+OVS_BUILD_CFLAGS 							:= -g
+OVS_SYSTEM_ID 								:= 2022
+OVS_PID_FILE 								:= /usr/local/var/run/openvswitch/ovs-vswitchd.pid
+OVS_VSWITCHD_LOG_FILE 						:= /usr/local/var/log/openvswitch/ovs-vswitchd.log
+OVS_DB_SOCK 								:= /usr/local/var/run/openvswitch/db.sock
+OVS_SCRIPTS_PATH							:= /usr/local/share/openvswitch/scripts
+OVS_INSTALL_DIR_1							:= /usr/local/sbin
+OVS_INSTALL_DIR_2							:= /usr/local/bin
+OVS_INSTALL_DIR_3							:= /usr/sbin
 
 # dpdk build options		
-export DEPENDENCIES_DIR 							= $(PWD)/deps
-export DPDK_SOURCE_DIR 								= $(DEPENDENCIES_DIR)/dpdk
-export DPDK_BUILD_DIR 								= $(DPDK_SOURCE_DIR)/build
-export DPDK_INSTALL_DIR								= /usr/local/bin
-export DPDK_GIT_LINK 								= http://dpdk.org/git/dpdk
-export DPDK_VERSION 								= v21.11
+DEPENDENCIES_DIR 							:= $(PWD)/deps
+DPDK_SOURCE_DIR 							:= $(DEPENDENCIES_DIR)/dpdk
+DPDK_BUILD_DIR 								:= $(DPDK_SOURCE_DIR)/build
+DPDK_INSTALL_DIR							:= /usr/local/bin
+DPDK_GIT_LINK 								:= http://dpdk.org/git/dpdk
+DPDK_VERSION 								:= v21.11
 
 # perf options		
-export PERF_EVENTS_RECORD							= perf.data
+PERF_EVENTS_RECORD							:= perf.data
 
 # libbpf build options		
-export LIBBPF_GIT_LINK								= https://github.com/libbpf/libbpf
-export LIBBPF_SOURCE_DIR							= $(DEPENDENCIES_DIR)/libbpf
-export LIBBPF_BUILD_DIR								= $(LIBBPF_SOURCE_DIR)/build
-export LIBBPF_BUILD_INCLUDE_DIR						= $(LIBBPF_BUILD_DIR)/usr/include
-export LIBBPF_BUILD_LIB64_DIR						= $(LIBBPF_BUILD_DIR)/usr/lib64
-export LIBBPF_STATIC_LIB							= libbpf.a
-export LIBBPF_SHARED_LIB_1							= libbpf.so
-export LIBBPF_SHARED_LIB_2							= libbpf.so.0
-export LIBBPF_SHARED_LIB_3							= libbpf.so.0.7.0
-export LIBBPF_STATIC_OBJs							= staticobjs
-export LIBBPF_SHARED_OBJs							= sharedobjs
-export SYSTEM_LIB_PATH								= /usr/lib
+LIBBPF_GIT_LINK								:= https://github.com/libbpf/libbpf
+LIBBPF_SOURCE_DIR							:= $(DEPENDENCIES_DIR)/libbpf
+LIBBPF_BUILD_DIR							:= $(LIBBPF_SOURCE_DIR)/build
+LIBBPF_BUILD_INCLUDE_DIR					:= $(LIBBPF_BUILD_DIR)/usr/include
+LIBBPF_BUILD_LIB64_DIR						:= $(LIBBPF_BUILD_DIR)/usr/lib64
+LIBBPF_STATIC_LIB							:= libbpf.a
+LIBBPF_SHARED_LIB_1							:= libbpf.so
+LIBBPF_SHARED_LIB_2							:= libbpf.so.0
+LIBBPF_SHARED_LIB_3							:= libbpf.so.0.7.0
+LIBBPF_STATIC_OBJs							:= staticobjs
+LIBBPF_SHARED_OBJs							:= sharedobjs
+SYSTEM_LIB_PATH								:= /usr/lib
 
 # bcc build options		
-export PYTHON3										= /usr/bin/python3
-export BCC_GIT_LINK 								= https://github.com/iovisor/bcc/
-export BCC_SOURCE_DIR 								= $(DEPENDENCIES_DIR)/bcc
-export BCC_BUILD_DIR 								= $(BCC_SOURCE_DIR)/build
-export BCC_INSTALL_DIR								= /usr/share/bcc/tools
+PYTHON3										:= /usr/bin/python3
+BCC_GIT_LINK 								:= https://github.com/iovisor/bcc/
+BCC_SOURCE_DIR 								:= $(DEPENDENCIES_DIR)/bcc
+BCC_BUILD_DIR 								:= $(BCC_SOURCE_DIR)/build
+BCC_INSTALL_DIR								:= /usr/share/bcc/tools
 
 # google test + gmock (bpftrace dependency) build options
-export GOOGLETEST_GIT_LINK 							= https://github.com/google/googletest/
-export GOOGLETEST_SOURCE_DIR						= $(DEPENDENCIES_DIR)/googletest
-export GOOGLETEST_BUILD_DIR							= $(GOOGLETEST_SOURCE_DIR)/build
+GOOGLETEST_GIT_LINK 						:= https://github.com/google/googletest/
+GOOGLETEST_SOURCE_DIR						:= $(DEPENDENCIES_DIR)/googletest
+GOOGLETEST_BUILD_DIR						:= $(GOOGLETEST_SOURCE_DIR)/build
 
 # bpftrace build options		
-export BPFTRACE_GIT_LINK							= https://github.com/iovisor/bpftrace/
-export BPFTRACE_SOURCE_DIR 							= $(DEPENDENCIES_DIR)/bpftrace
-export BPFTRACE_BUILD_DIR 							= $(BPFTRACE_SOURCE_DIR)/build
-export BPFTRACE_PROBE_LOG							= { printf("%s %u [%u] %u %s\n", comm, pid, cpu, elapsed, probe); }
+BPFTRACE_GIT_LINK							:= https://github.com/iovisor/bpftrace/
+BPFTRACE_SOURCE_DIR 						:= $(DEPENDENCIES_DIR)/bpftrace
+BPFTRACE_BUILD_DIR 							:= $(BPFTRACE_SOURCE_DIR)/build
+BPFTRACE_PROBE_LOG							:= { printf("%s %u [%u] %u %s\n", comm, pid, cpu, elapsed, probe); }
 
 # dtrace build options		
-export DTRACE_SOURCE_DIR							= $(DEPENDENCIES_DIR)/linux
-export DTRACE_BUILD_DIR 							= $(DTRACE_SOURCE_DIR)/build
-export DTRACE_GIT_LINK 								= https://github.com/dtrace4linux/linux.git
+DTRACE_SOURCE_DIR							:= $(DEPENDENCIES_DIR)/linux
+DTRACE_BUILD_DIR 							:= $(DTRACE_SOURCE_DIR)/build
+DTRACE_GIT_LINK 							:= https://github.com/dtrace4linux/linux.git
 
 # usdt trace utilities		
-export OVS_USDT_UTILITIES							= ovs/utilities/usdt-scripts
-export OVS_USDT_VSWITCHD_HIST_SCRIPT				= $(OVS_USDT_UTILITIES)/bridge_loop.bt
-export OVS_USDT_UPCALL_MONITOR_SCRIPT				= $(OVS_USDT_UTILITIES)/upcall_monitor.py
-export OVS_USDT_UPCALL_COST_SCRIPT					= $(OVS_USDT_UTILITIES)/upcall_cost.py
+OVS_USDT_UTILITIES							:= ovs/utilities/usdt-scripts
+OVS_USDT_VSWITCHD_HIST_SCRIPT				:= $(OVS_USDT_UTILITIES)/bridge_loop.bt
+OVS_USDT_UPCALL_MONITOR_SCRIPT				:= $(OVS_USDT_UTILITIES)/upcall_monitor.py
+OVS_USDT_UPCALL_COST_SCRIPT					:= $(OVS_USDT_UTILITIES)/upcall_cost.py
 
 # project variables		
-export BIN_DIR 										= bin
-export CONFIG_DIR 									= $(PWD)/config
-export CONTAINER_MOUNT_DIR 							= /tmp/ovs-tests
-export CONTAINER_SETUP_SCRIPT 						= setup-container.sh
+BIN_DIR 									:= bin
+CONFIG_DIR 									:= $(PWD)/config
+CONTAINER_MOUNT_DIR 						:= /tmp/ovs-tests
+CONTAINER_SETUP_SCRIPT 						:= setup-container.sh
 
 # general experiment variables		
-export DOCKER_IMAGE_NAME 							= ovs-experiments/debug-containers
-export BRIDGE_IP 									= 192.168.0.1
-export BRIDGE_NETMASK 								= 255.255.255.0
-export BRIDGE_NAME 									= test-br
-export SIDE_BRIDGE_NAME 							= test-sys-br
-export TX_CONTAINER_NAME 							= tx
-export RX_CONTAINER_NAME 							= rx
-export CONTAINER_INTERFACE_NAME 					= ovs-eth1
-export CONTAINER_VF_INTERFACE_NAME 					= enp210s0f0v0
-export TX_CONTAINER_IP 								= 192.168.0.10
-export RX_CONTAINER_IP 								= 192.168.0.20
-export IP_PREFIX 									= 24
-export IPERF_FOR_N_SECONDS 							= 10
-export IPERF_BW 									= 10000M
-export PYTHON 										= python3
+DOCKER_IMAGE_NAME 							:= ovs-experiments/debug-containers
+BRIDGE_IP 									:= 192.168.0.1
+BRIDGE_NETMASK 								:= 255.255.255.0
+BRIDGE_NAME 								:= test-br
+SIDE_BRIDGE_NAME 							:= test-sys-br
+TX_CONTAINER_NAME 							:= tx
+RX_CONTAINER_NAME 							:= rx
+CONTAINER_INTERFACE_NAME 					:= ovs-eth1
+CONTAINER_VF_INTERFACE_NAME 				:= enp210s0f0v0
+TX_CONTAINER_IP 							:= 192.168.0.10
+RX_CONTAINER_IP 							:= 192.168.0.20
+IP_PREFIX 									:= 24
+IPERF_FOR_N_SECONDS 						:= 10
+IPERF_BW 									:= 10000M
+PYTHON 										:= python3
 
 # NSX ovs configurations
-export NSX_OVS_CONFIGURATION_DB_FILE				= $(CONFIG_DIR)/conf.db
-export NSX_OPENFLOW_RULE_SET						= $(CONFIG_DIR)/ovs-ofctl-dump-flows-nsx-managed.out
-export CLASSBENCH_ACL1_2_OPENFLOW_RULE_SET			= $(CONFIG_DIR)/acl1_2_mapped_rules.txt
-export CLASSBENCH_ACL1_250_OPENFLOW_RULE_SET		= $(CONFIG_DIR)/acl1_100_ovs_kernel_mapped_rules.txt
+NSX_OVS_CONFIGURATION_DB_FILE				:= $(CONFIG_DIR)/conf.db
+NSX_OPENFLOW_RULE_SET						:= $(CONFIG_DIR)/ovs-ofctl-dump-flows-nsx-managed.out
+CLASSBENCH_ACL1_2_OPENFLOW_RULE_SET			:= $(CONFIG_DIR)/acl1_2_mapped_rules.txt
+CLASSBENCH_ACL1_250_OPENFLOW_RULE_SET		:= $(CONFIG_DIR)/acl1_100_ovs_kernel_mapped_rules.txt
 
 # full rule sets generated from classbench
-export CLASSBENCH_ACL1_500K_OPENFLOW_RULE_SET		= $(CONFIG_DIR)/acl1_500K_mapped_rules.txt
-export CLASSBENCH_ACL2_500K_OPENFLOW_RULE_SET		= $(CONFIG_DIR)/acl2_500K_mapped_rules.txt
-export CLASSBENCH_ACL3_500K_OPENFLOW_RULE_SET		= $(CONFIG_DIR)/acl3_500K_mapped_rules.txt
-export CLASSBENCH_ACL4_500K_OPENFLOW_RULE_SET		= $(CONFIG_DIR)/acl4_500K_mapped_rules.txt
-export CLASSBENCH_ACL5_500K_OPENFLOW_RULE_SET		= $(CONFIG_DIR)/acl5_500K_mapped_rules.txt
-export CLASSBENCH_FW1_500K_OPENFLOW_RULE_SET		= $(CONFIG_DIR)/fw1_500K_mapped_rules.txt
-export CLASSBENCH_FW2_500K_OPENFLOW_RULE_SET		= $(CONFIG_DIR)/fw2_500K_mapped_rules.txt
-export CLASSBENCH_FW3_500K_OPENFLOW_RULE_SET		= $(CONFIG_DIR)/fw3_500K_mapped_rules.txt
-export CLASSBENCH_FW4_500K_OPENFLOW_RULE_SET		= $(CONFIG_DIR)/fw4_500K_mapped_rules.txt
-export CLASSBENCH_FW5_500K_OPENFLOW_RULE_SET		= $(CONFIG_DIR)/fw5_500K_mapped_rules.txt
-export CLASSBENCH_IPC1_500K_OPENFLOW_RULE_SET		= $(CONFIG_DIR)/ipc1_500K_mapped_rules.txt
-export CLASSBENCH_IPC2_500K_OPENFLOW_RULE_SET		= $(CONFIG_DIR)/ipc2_500K_mapped_rules.txt
+CLASSBENCH_ACL1_500K_OPENFLOW_RULE_SET		:= $(CONFIG_DIR)/acl1_500K_mapped_rules.txt
+CLASSBENCH_ACL2_500K_OPENFLOW_RULE_SET		:= $(CONFIG_DIR)/acl2_500K_mapped_rules.txt
+CLASSBENCH_ACL3_500K_OPENFLOW_RULE_SET		:= $(CONFIG_DIR)/acl3_500K_mapped_rules.txt
+CLASSBENCH_ACL4_500K_OPENFLOW_RULE_SET		:= $(CONFIG_DIR)/acl4_500K_mapped_rules.txt
+CLASSBENCH_ACL5_500K_OPENFLOW_RULE_SET		:= $(CONFIG_DIR)/acl5_500K_mapped_rules.txt
+CLASSBENCH_FW1_500K_OPENFLOW_RULE_SET		:= $(CONFIG_DIR)/fw1_500K_mapped_rules.txt
+CLASSBENCH_FW2_500K_OPENFLOW_RULE_SET		:= $(CONFIG_DIR)/fw2_500K_mapped_rules.txt
+CLASSBENCH_FW3_500K_OPENFLOW_RULE_SET		:= $(CONFIG_DIR)/fw3_500K_mapped_rules.txt
+CLASSBENCH_FW4_500K_OPENFLOW_RULE_SET		:= $(CONFIG_DIR)/fw4_500K_mapped_rules.txt
+CLASSBENCH_FW5_500K_OPENFLOW_RULE_SET		:= $(CONFIG_DIR)/fw5_500K_mapped_rules.txt
+CLASSBENCH_IPC1_500K_OPENFLOW_RULE_SET		:= $(CONFIG_DIR)/ipc1_500K_mapped_rules.txt
+CLASSBENCH_IPC2_500K_OPENFLOW_RULE_SET		:= $(CONFIG_DIR)/ipc2_500K_mapped_rules.txt
 
-export CLASSBENCH_FW1_2000_OPENFLOW_RULE_SET		= $(CONFIG_DIR)/fw1_2000_mapped_rules.txt
+CLASSBENCH_FW1_2000_OPENFLOW_RULE_SET		:= $(CONFIG_DIR)/fw1_2000_mapped_rules.txt
 
 # connect-x6 interface variables
-export CONNECT_X6_INTF_1_PCI_ADDRESS 				= 0000:d2:00.0
-export CONNECT_X6_INTF_2_PCI_ADDRESS 				= 0000:d2:00.1
-export CONNECT_X6_INTF_1_PCI_ADDRESS_2 				= 0000:d2:00
-export CONNECT_X6_INTF_2_PCI_ADDRESS_2 				= 0000:d2:01
+CONNECT_X6_INTF_1_PCI_ADDRESS 				:= 0000:d2:00.0
+CONNECT_X6_INTF_2_PCI_ADDRESS 				:= 0000:d2:00.1
+CONNECT_X6_INTF_1_PCI_ADDRESS_2 			:= 0000:d2:00
+CONNECT_X6_INTF_2_PCI_ADDRESS_2 			:= 0000:d2:01
 
-export CONNECT_X6_INTF_1_VF_0_PCI_ADDRESS 			= $(CONNECT_X6_INTF_1_PCI_ADDRESS_2).2
-# export CONNECT_X6_INTF_1_VF_1_PCI_ADDRESS 			= $(CONNECT_X6_INTF_1_PCI_ADDRESS_2).3
-# export CONNECT_X6_INTF_1_VF_2_PCI_ADDRESS 			= $(CONNECT_X6_INTF_1_PCI_ADDRESS_2).4
-# export CONNECT_X6_INTF_1_VF_3_PCI_ADDRESS 			= $(CONNECT_X6_INTF_1_PCI_ADDRESS_2).5
-export CONNECT_X6_INTF_2_VF_0_PCI_ADDRESS 			= $(CONNECT_X6_INTF_2_PCI_ADDRESS_2).2
-# export CONNECT_X6_INTF_2_VF_1_PCI_ADDRESS 			= $(CONNECT_X6_INTF_2_PCI_ADDRESS_2).3
-# export CONNECT_X6_INTF_2_VF_2_PCI_ADDRESS 			= $(CONNECT_X6_INTF_2_PCI_ADDRESS_2).4
-# export CONNECT_X6_INTF_2_VF_3_PCI_ADDRESS 			= $(CONNECT_X6_INTF_2_PCI_ADDRESS_2).5
+CONNECT_X6_INTF_1_VF_0_PCI_ADDRESS 			:= $(CONNECT_X6_INTF_1_PCI_ADDRESS_2).2
+# CONNECT_X6_INTF_1_VF_1_PCI_ADDRESS 			:= $(CONNECT_X6_INTF_1_PCI_ADDRESS_2).3
+# CONNECT_X6_INTF_1_VF_2_PCI_ADDRESS 			:= $(CONNECT_X6_INTF_1_PCI_ADDRESS_2).4
+# CONNECT_X6_INTF_1_VF_3_PCI_ADDRESS 			:= $(CONNECT_X6_INTF_1_PCI_ADDRESS_2).5
+CONNECT_X6_INTF_2_VF_0_PCI_ADDRESS 			:= $(CONNECT_X6_INTF_2_PCI_ADDRESS_2).2
+# CONNECT_X6_INTF_2_VF_1_PCI_ADDRESS 			:= $(CONNECT_X6_INTF_2_PCI_ADDRESS_2).3
+# CONNECT_X6_INTF_2_VF_2_PCI_ADDRESS 			:= $(CONNECT_X6_INTF_2_PCI_ADDRESS_2).4
+# CONNECT_X6_INTF_2_VF_3_PCI_ADDRESS 			:= $(CONNECT_X6_INTF_2_PCI_ADDRESS_2).5
 
-export CONNECT_X6_INTF_1_VF_0_MAC_ADDRESS 			= e4:11:22:33:44:50
-# export CONNECT_X6_INTF_1_VF_1_MAC_ADDRESS 			= e4:11:22:33:44:51
-# export CONNECT_X6_INTF_1_VF_2_MAC_ADDRESS 			= e4:11:22:33:44:52
-# export CONNECT_X6_INTF_1_VF_3_MAC_ADDRESS 			= e4:11:22:33:44:53
+CONNECT_X6_INTF_1_VF_0_MAC_ADDRESS 			:= e4:11:22:33:44:50
+# CONNECT_X6_INTF_1_VF_1_MAC_ADDRESS 			:= e4:11:22:33:44:51
+# CONNECT_X6_INTF_1_VF_2_MAC_ADDRESS 			:= e4:11:22:33:44:52
+# CONNECT_X6_INTF_1_VF_3_MAC_ADDRESS 			:= e4:11:22:33:44:53
 
-export CONNECT_X6_INTF_2_VF_0_MAC_ADDRESS 			= e4:11:22:33:44:60
-# export CONNECT_X6_INTF_2_VF_1_MAC_ADDRESS 			= e4:11:22:33:44:61
-# export CONNECT_X6_INTF_2_VF_2_MAC_ADDRESS 			= e4:11:22:33:44:62
-# export CONNECT_X6_INTF_2_VF_3_MAC_ADDRESS 			= e4:11:22:33:44:63
+CONNECT_X6_INTF_2_VF_0_MAC_ADDRESS 			:= e4:11:22:33:44:60
+# CONNECT_X6_INTF_2_VF_1_MAC_ADDRESS 			:= e4:11:22:33:44:61
+# CONNECT_X6_INTF_2_VF_2_MAC_ADDRESS 			:= e4:11:22:33:44:62
+# CONNECT_X6_INTF_2_VF_3_MAC_ADDRESS 			:= e4:11:22:33:44:63
 
-export CONNECT_X6_INTF_1_NAME 						= enp210s0f0np0
-export CONNECT_X6_INTF_2_NAME 						= enp210s0f1np1
+CONNECT_X6_INTF_1_NAME 						:= enp210s0f0np0
+CONNECT_X6_INTF_2_NAME 						:= enp210s0f1np1
 
-export OVS_DPDK_BRIDGE_CX6_PORT_1					= cx61
-export OVS_DPDK_BRIDGE_CX6_PORT_2					= cx62
+OVS_DPDK_BRIDGE_CX6_PORT_1					:= cx61
+OVS_DPDK_BRIDGE_CX6_PORT_2					:= cx62
 
-export OVS_DPDK_BRIDGE_CX6_PORT_1_VF_1				= $(OVS_DPDK_BRIDGE_CX6_PORT_1)1
-# export OVS_DPDK_BRIDGE_CX6_PORT_1_VF_2				= $(OVS_DPDK_BRIDGE_CX6_PORT_1)2
-# export OVS_DPDK_BRIDGE_CX6_PORT_1_VF_3				= $(OVS_DPDK_BRIDGE_CX6_PORT_1)3
-# export OVS_DPDK_BRIDGE_CX6_PORT_1_VF_4				= $(OVS_DPDK_BRIDGE_CX6_PORT_1)4
+OVS_DPDK_BRIDGE_CX6_PORT_1_VF_1				:= $(OVS_DPDK_BRIDGE_CX6_PORT_1)1
+# OVS_DPDK_BRIDGE_CX6_PORT_1_VF_2				:= $(OVS_DPDK_BRIDGE_CX6_PORT_1)2
+# OVS_DPDK_BRIDGE_CX6_PORT_1_VF_3				:= $(OVS_DPDK_BRIDGE_CX6_PORT_1)3
+# OVS_DPDK_BRIDGE_CX6_PORT_1_VF_4				:= $(OVS_DPDK_BRIDGE_CX6_PORT_1)4
 
-export OVS_DPDK_BRIDGE_CX6_PORT_2_VF_1				= $(OVS_DPDK_BRIDGE_CX6_PORT_2)1
-# export OVS_DPDK_BRIDGE_CX6_PORT_2_VF_2				= $(OVS_DPDK_BRIDGE_CX6_PORT_2)2
-# export OVS_DPDK_BRIDGE_CX6_PORT_2_VF_3				= $(OVS_DPDK_BRIDGE_CX6_PORT_2)3
-# export OVS_DPDK_BRIDGE_CX6_PORT_2_VF_4				= $(OVS_DPDK_BRIDGE_CX6_PORT_2)4
+OVS_DPDK_BRIDGE_CX6_PORT_2_VF_1				:= $(OVS_DPDK_BRIDGE_CX6_PORT_2)1
+# OVS_DPDK_BRIDGE_CX6_PORT_2_VF_2				:= $(OVS_DPDK_BRIDGE_CX6_PORT_2)2
+# OVS_DPDK_BRIDGE_CX6_PORT_2_VF_3				:= $(OVS_DPDK_BRIDGE_CX6_PORT_2)3
+# OVS_DPDK_BRIDGE_CX6_PORT_2_VF_4				:= $(OVS_DPDK_BRIDGE_CX6_PORT_2)4
 
-export NGA1_CX6_INTF_1_IP							= 172.16.0.10
-export NGA1_CX6_INTF_2_IP							= 172.17.0.10
-export NGA3_CX6_INTF_1_IP							= 172.16.0.30
-export NGA3_CX6_INTF_2_IP							= 172.17.0.30
+NGA1_CX6_INTF_1_IP							:= 172.16.0.10
+NGA1_CX6_INTF_2_IP							:= 172.17.0.10
+NGA3_CX6_INTF_1_IP							:= 172.16.0.30
+NGA3_CX6_INTF_2_IP							:= 172.17.0.30
 
 # specific experiment variables		
-export EXPERIMENTS 									= experiments
-export SINGLE_PACKET_EXPERIMENTS 					= $(EXPERIMENTS)/single-packet
+EXPERIMENTS 								:= experiments
+SINGLE_PACKET_EXPERIMENTS 					:= $(EXPERIMENTS)/single-packet
 
 # condensed commands
-export SUDO 										= echo $(USER_PASSWORD) | sudo -S
-export OVS-CTL 										= $(SUDO) env "PATH=$$PATH" ovs-ctl
-export OVS-VSCTL 									= $(SUDO) -s ovs-vsctl
-export OVS-OFCTL 									= $(SUDO) -s ovs-ofctl
-export OVS-APPCTL 									= $(SUDO) -s ovs-appctl
+SUDO 										:= echo $(USER_PASSWORD) | sudo -S
+OVS-CTL 									:= $(SUDO) env "PATH=$$PATH" ovs-ctl
+OVS-VSCTL 									:= $(SUDO) -s ovs-vsctl
+OVS-OFCTL 									:= $(SUDO) -s ovs-ofctl
+OVS-APPCTL 									:= $(SUDO) -s ovs-appctl
 
 .DEFAULT_GOAL := show-pci-devices
 
