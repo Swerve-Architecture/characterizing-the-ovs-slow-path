@@ -1,0 +1,2 @@
+[traffic_generator]
+traffic_gen_machine_ip ansible_ssh_user=root_username ansible_ssh_pass=root_password
