@@ -2,7 +2,7 @@
 - name: sample book
   hosts: traffic_generator
   remote_user: root
-  become: true
+  become: true # privilage escalation
   tasks: 
     - name: install httpd
       yum: 
