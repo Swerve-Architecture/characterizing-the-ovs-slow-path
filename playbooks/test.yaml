@@ -15,4 +15,4 @@
     - name: create content
       copy: 
           content: "Congrats on installing ansible"
-          dest: /var/www/html/index.html
+          dest: /var/www/html/index.html 
